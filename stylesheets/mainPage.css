@@ -1,0 +1,197 @@
+/* GENERAL CONTENT */
+	p {
+		font-weight: lighter;
+	}
+
+	.normal-text {
+		font-weight: normal !important;
+	}
+
+	.icon-button {
+		background-color: transparent;
+		border: 0px;
+	    text-align: center;
+	    text-decoration: none;
+	    border-radius: 50%;
+	}
+
+	.big-icon {
+		font-size: 75px;
+	}
+
+	.center-div {
+	  	width: 50%;
+		margin: 0 auto;
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	.destime-big-button {
+		color: #0d0426;
+		font-weight: normal;
+		border: none;
+
+		width: 200px;
+		min-width: 100px;
+		height: 50px;
+
+		/*Gradient*/
+		background: #2cfec9; /* For browsers that do not support gradients */
+		background: -webkit-linear-gradient(left, #2cfec9 , #fee433 60%); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(right, #2cfec9, #fee433 60%); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(right, #2cfec9, #fee433 60%); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(to right, #2cfec9 , #fee433 60%); /* Standard syntax */
+
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+
+		/*450 x 126*/
+	}
+
+	.destime-big-button:hover {
+		/*Gradient*/
+		background: #2cfec9; /* For browsers that do not support gradients */
+		background: -webkit-linear-gradient(left, #fee433, #2cfec9 60%); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(right, #fee433, #2cfec9 60%); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(right, #fee433, #2cfec9 60%); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(to right, #fee433, #2cfec9 60%); /* Standard syntax */
+	}
+
+	.yellow {
+		color: #fee433;
+	}
+
+	.navy {
+		color: #0d0426;
+	}
+
+	.yellow-gradient {
+	  background: #2cfec9; /* For browsers that do not support gradients */
+	  background: -webkit-linear-gradient(left, #2cfec9 , #feeb34); /* For Safari 5.1 to 6.0 */
+	  background: -o-linear-gradient(right, #2cfec9, #feeb34); /* For Opera 11.1 to 12.0 */
+	  background: -moz-linear-gradient(right, #2cfec9, #feeb34); /* For Firefox 3.6 to 15 */
+	  background: linear-gradient(to right, #2cfec9 , #feeb34); /* Standard syntax */
+	}
+
+	.gradient-icon {
+	    /*background: -webkit-gradient(linear, left top, left bottom, from(#ff5db1), to(#ef017c));*/
+	  	background: #2cfec9; /* For browsers that do not support gradients */
+	  	background: -webkit-linear-gradient(left, #2cfec9 , #feeb34); /* For Safari 5.1 to 6.0 */
+	  	background: -o-linear-gradient(right, #2cfec9, #feeb34); /* For Opera 11.1 to 12.0 */
+	  	background: -moz-linear-gradient(right, #2cfec9, #feeb34); /* For Firefox 3.6 to 15 */
+	  	background: linear-gradient(to right, #2cfec9 , #feeb34); /* Standard syntax */
+	    -webkit-background-clip: text;
+	    -webkit-text-fill-color: transparent;
+	    display: initial;
+	}
+
+	.test {
+		background-color: red;
+	}
+
+	.test1 {
+		background-color: blue;
+	}
+
+	.test2 {
+		background-color: yellow;
+	}
+
+/* HOME PAGE */
+	body {
+		background-color: #ecf0f1;
+		font-size: 17px;
+		letter-spacing: 1px;
+	}
+
+	.play-button-contianer {
+	    padding-top: 130px;
+	}
+
+	.home-play-button {
+		margin-bottom: 20px;
+	}
+
+	.home-play-button span {
+		font-size: 120px;
+	}
+
+	.main {
+		background-color: #0d0426;
+		color: white;
+
+		width: 100%;
+		min-height: 700px;
+		padding: 100px 0px;
+
+
+		position: relative;
+		overflow: hidden;
+	}
+
+
+	.main:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+
+		background-image: url(http://www.nattyfeed.com/wp-content/uploads/2017/08/Base-jump.jpeg);
+		background-size: auto 100%;
+		background-repeat: no-repeat;
+		background-position: 100% 0%;
+
+		filter: url(#blue-tint);
+
+		/*http://bennettfeely.com/clippy/*/
+		-webkit-clip-path: polygon(70% 0, 100% 0, 100% 100%, 45% 100%);
+		clip-path: polygon(70% 0, 100% 0, 100% 100%, 45% 100%);
+
+		/*transition animation*/
+		-webkit-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+	}
+
+	.title-content h1 {
+		margin-top: 30px;
+		margin-bottom: 30px;
+		font-size: 2.5em;
+		font-weight: 400;
+	}
+
+	.title-content p {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+
+	.title-content button {
+		margin: 10px 15px;
+	}
+
+	.defs-only {
+		display: none;
+	}
+
+	@media screen and (max-width:1199px) {
+		.main:before {
+		/*http://bennettfeely.com/clippy/*/
+		/*-webkit-clip-path: polygon(0 63%, 100% 64%, 100% 100%, 0% 100%);*/
+		/*clip-path: polygon(0 63%, 100% 64%, 100% 100%, 0% 100%);*/
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 63%, 0 63%);
+		clip-path: polygon(0 0, 100% 0, 100% 63%, 0 63%);
+
+		/*
+			might find way to make animation smoother
+			at the following link:
+			https://codepen.io/imohkay/pen/ZGbjbz?editors=1100
+		 */
+		/*transition animation*/
+		-webkit-transition: all 0.3s linear;
+		transition: all 0.3s linear;
+		}
+	}

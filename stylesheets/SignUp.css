@@ -1,0 +1,207 @@
+/* line 8, ../sass/signup_v2.sass */
+body {
+  background-color: #0B0424;
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+/* line 15, ../sass/signup_v2.sass */
+
+
+/* line 18, ../sass/signup_v2.sass */
+.header {
+  width: 100%;
+}
+/* line 21, ../sass/signup_v2.sass */
+.header #logo {
+  width: 75px;
+}
+/* line 24, ../sass/signup_v2.sass */
+.header .title-container {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 35px;
+}
+/* line 29, ../sass/signup_v2.sass */
+.header .title-container .main-title {
+  font-size: 42px;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+/* line 36, ../sass/signup_v2.sass */
+.social-button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  border: none;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  margin: 40px 0;
+  transition: all 0.1s ease-in-out;
+  color: white;
+}
+/* line 49, ../sass/signup_v2.sass */
+.social-button:hover {
+  transform: scale(1.05);
+}
+
+/* line 52, ../sass/signup_v2.sass */
+.facebook {
+  background-color: #3b5998;
+}
+
+/* line 55, ../sass/signup_v2.sass */
+.twitter {
+  background-color: #1DA1F2;
+}
+
+/* line 58, ../sass/signup_v2.sass */
+.google {
+  background-color: #DB3236;
+}
+
+/* line 61, ../sass/signup_v2.sass */
+.linkedin {
+  background-color: #0077B5;
+}
+
+/* line 64, ../sass/signup_v2.sass */
+.or-container {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  line-height: 1;
+}
+/* line 70, ../sass/signup_v2.sass */
+.or-container .or {
+  display: inline-block;
+  position: relative;
+}
+/* line 74, ../sass/signup_v2.sass */
+.or-container .or:before, .or-container .or:after {
+  content: "";
+  position: absolute;
+  height: 7px;
+  border-bottom: 1px solid white;
+  top: 0;
+  width: 200px;
+}
+/* line 82, ../sass/signup_v2.sass */
+.or-container .or:before {
+  right: 100%;
+  margin-right: 15px;
+}
+/* line 86, ../sass/signup_v2.sass */
+.or-container .or:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+/* line 91, ../sass/signup_v2.sass */
+.inner-container {
+  width: 100%;
+}
+/* line 94, ../sass/signup_v2.sass */
+.inner-container input, .inner-container textarea {
+  outline: none;
+  resize: none;
+  color: white;
+  padding: 0 10px;
+  letter-spacing: 1px;
+  font-weight: 100;
+  border-image: linear-gradient(to right, #4BC2B6 0%, #FEEB25 100%);
+  border-radius: 3px;
+  border-image-width: 2px;
+  border-image-slice: 1;
+}
+/* line 106, ../sass/signup_v2.sass */
+.inner-container input::placeholder, .inner-container textarea::placeholder {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 100;
+}
+/* line 112, ../sass/signup_v2.sass */
+.inner-container .inner-inner-container {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+/* line 116, ../sass/signup_v2.sass */
+.inner-container .inner-inner-container .form-input {
+  box-sizing: border-box;
+  display: block;
+  height: 35px;
+  width: 100%;
+  margin: 40px 0;
+  background-color: transparent;
+  border-radius: 3px;
+  border-image-width: 2px;
+  border-image-slice: 1;
+}
+/* line 127, ../sass/signup_v2.sass */
+.inner-container .inner-inner-container .double-input-container {
+  width: 100%;
+  display: flex;
+}
+/* line 131, ../sass/signup_v2.sass */
+.inner-container .inner-inner-container .double-input-container .double-input {
+  box-sizing: border-box;
+  height: 35px;
+  background-color: transparent;
+  border-radius: 3px;
+  flex: 0 0 49%;
+}
+/* line 139, ../sass/signup_v2.sass */
+.inner-container .inner-inner-container .double-input-container .right-input {
+  margin-left: calc(100% - 2 * 49%);
+}
+/* line 142, ../sass/signup_v2.sass */
+.inner-container .inner-inner-container .last-container {
+  margin-top: 40px;
+}
+/* line 145, ../sass/signup_v2.sass */
+.inner-container .inner-inner-container #about-input {
+  height: 120px;
+  padding: 10px;
+}
+/* line 149, ../sass/signup_v2.sass */
+.inner-container .inner-inner-container #upload-button {
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  border-image: linear-gradient(to right, #4BC2B6 0%, #FEEB25 100%);
+  border-radius: 3px;
+  border-image-width: 2px;
+  border-image-slice: 1;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 100;
+}
+/* line 162, ../sass/signup_v2.sass */
+.inner-container .inner-inner-container #signup-button {
+  margin-top: 40px;
+  width: 100%;
+  height: 35px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #4BC2B6 0%, #FEEB25 100%);
+  border: 0;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.inner-container .inner-inner-container #signin-button {
+  
+  width: 100%;
+  height: 35px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #4BC2B6 0%, #FEEB25 100%);
+  border: 0;
+  font-size: 14px;
+  font-weight: 200;
+}
