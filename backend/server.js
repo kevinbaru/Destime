@@ -10,14 +10,14 @@ var passport = require('passport');
 // var FacebookStrategy = require('passport-facebook').Strategy;
 // var TwitterStrategy = require('passport-twitter').Strategy;
 var cors = require('cors')
+var models = require('./models');
 
-var models = require('./models/models');
 //var routes = require('./routes/routes');
 var auth = require('./routes/auth');
 
 var app = express();
 var mongoose = require('mongoose');
-var connect = "mongodb://destime:destime@ds235775.mlab.com:35775/destime";
+var connect = "mongodb://localhost:27017/Destime";
 mongoose.connect(connect);
 
 app.use(logger('dev'));
@@ -144,6 +144,14 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+var test = new models.User({name: 'John Smith'});
+
+// test.save((err) => {
+//   if (err) {
+//     console.log(err);
+//   }
+// });
 
 
 module.exports = app;

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var models = require('../models/models.js');
+var models = require('../models.js');
 var validator = require('validator');
 var cors = require('cors')
 var bcrypt = require('bcryptjs');
