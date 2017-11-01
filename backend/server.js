@@ -145,13 +145,151 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var test = new models.User({name: 'John Smith'});
+var userTest = new models.User({
+  name: 'John Smith',
+  firstname: 'John',
+  lastname: 'Smith',
+  username: 'johnsmith',
+  password: '123456',
+  phone: '123-456-789',
+  email: 'johnsmith@desti.me',
+  role: 'UFO',
+  industry: 'Internet',
+  location: 'NYC',
+  universityOrCompany: true,
+  favorite: {
+    travel: ['Italy', 'France'],
+    film: ['La La Land', 'Wiplash'],
+    tv: ['House of Cards', 'Prison Break'],
+    music: ['Jazz', 'Rock'],
+    theatre: ['Boston Opera House'],
+    books: ['Le Petit Prince'],
+    mags: ['Playboy', 'Nature'],
+    brands: ['Gucci', 'Nike'],
+    celebs: ['Steve Jobs'],
+    apps: ['Slack', 'Facebook']
+  },
+  professionals: [
+    {
+      schooling: [
+        {
+          schoolName: 'MIT',
+          major: 'Computer Science',
+          degree: 'Master'
+        },
+        {
+          schoolName: 'Stanford',
+          major: 'Computer Science',
+          degree: 'Bachelor'
+        }
+      ],
+      influencers: ['Steve Jobs', 'Jack Ma'],
+      connections_amount: 45
+    }
+  ],
+  user_survey: {
+    selflessness_rate: 5,
+    personality_rate: 5,
+    work_ethic_rate: 5,
+    creativity_rate: 5,
+    socially_rate: 5,
+    hobbies_rate: 5,
+    decision_rate: 5,
+    bravery_rate: 5
+  },
+  destime: {
+    destime_name: 'Build another Amazon',
+    goals: 'Become the No.1 in e-commerce area',
+    sameIndustryOrNot: true
+  },
+  essence: [
+    'happy',
+    'positive',
+    'strong mind',
+    'hardworking',
+    'quick learner'
+  ],
+  userReview: 5
+});
 
-// test.save((err) => {
-//   if (err) {
-//     console.log(err);
-//   }
-// });
+var teamTest = new models.Team({
+  productProject: 'Destime Platform',
+  user_set: [
+    {
+      role: 'Tech Lead',
+      Owns: '30%',
+      isMasterOrNot: true
+    }
+  ],
+  Description: 'Greate team ever.',
+  Team_review: 5
+});
+
+var productTest = new models.Product({
+  industry: 'Software',
+  description: 'Best product ever',
+  Product_Phase: 3,
+  LevelDifficulty: 'Hard',
+  estimated_duration: '6 months',
+  actual_duration: '9 months',
+  estimated_cost: '50k',
+  actual_cost: '40k',
+  skills_set: ['Java', 'MongoDB'],
+  Product_review: 5
+});
+
+var skillTest = new models.Skill({
+  skillName: 'Java',
+  experienceTime: '5 years',
+  degree: 'Master'
+});
+
+var recommendationTest = new models.Recommendation({
+  software_To_Use: ['Hadoop', 'Eclipse'],
+  database: ['MySQL', 'MongoDB'],
+  skills_needed: ['Database', 'Cache', 'File System'],
+  Languages: ['Java', 'JavaScript'],
+  hosting: 'Whatever',
+  view: 'Whatever'
+});
+
+userTest.skill_set.push(skillTest);
+userTest.product_team.push(teamTest);
+userTest.product_set.push(productTest);
+productTest.Technical_Recommendation.push(recommendationTest);
+productTest.product_Team.push(teamTest);
+teamTest.user_set[0].user = userTest;
+
+userTest.save((err) => {
+  if (err) {
+    console.log(err);
+  }
+  productTest.save((err) => {
+    if (err) {
+      console.log(err);
+    }
+    recommendationTest.save((err) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log("Recommendation Created!");
+    });
+    teamTest.save((err) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log("Team Created!");
+    });
+    console.log("Product Created!");
+  });
+  skillTest.save((err) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log("Skill Created!");
+  });
+  console.log("User Created!");
+});
 
 
 module.exports = app;

@@ -6,7 +6,7 @@ var connect = "mongodb://localhost:27017/Destime";
 mongoose.connect(connect);
 
 var favoriteSchema = mongoose.Schema({
-  travel: String,
+  travel: [String],
   film: [String],
   tv: [String],
   music: [String],
@@ -20,45 +20,118 @@ var favoriteSchema = mongoose.Schema({
 
 var professionalsSchema = mongoose.Schema({
   companyWorked: [{
-    companyName: String,
-    title: String
+    companyName: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
   }],
   schooling: [{
-    schoolName: String,
-    major: String,
-    degree: String
+    schoolName: {
+      type: String,
+      required: true
+    },
+    major: {
+      type: String,
+      required: true
+    },
+    degree: {
+      type: String,
+      required: true
+    }
   }],
   influencers: [String],
   groups: [String],
-  connections_amount: String
+  connections_amount: {
+    type: Number,
+    min: 0,
+    required: true
+  }
 });
 
 var useSurveySchema = mongoose.Schema({
-  selflessness_rate: Number,
-  personality_rate: Number,
-  work_ethic_rate: Number,
-  creativity_rate: Number,
-  bravery_rate: Number,
-  socially_rate: Number,
-  hobbies_rate: Number,
-  decision_rate: Number
+  selflessness_rate: {
+    type: Number,
+    min: 1,
+    max: 5,
+    required: true
+  },
+  personality_rate: {
+    type: Number,
+    min: 1,
+    max: 5,
+    required: true
+  },
+  work_ethic_rate: {
+    type: Number,
+    min: 1,
+    max: 5,
+    required: true
+  },
+  creativity_rate: {
+    type: Number,
+    min: 1,
+    max: 5,
+    required: true
+  },
+  bravery_rate: {
+    type: Number,
+    min: 1,
+    max: 5,
+    required: true
+  },
+  socially_rate: {
+    type: Number,
+    min: 1,
+    max: 5,
+    required: true
+  },
+  hobbies_rate: {
+    type: Number,
+    min: 1,
+    max: 5
+  },
+  decision_rate: {
+    type: Number,
+    min: 1,
+    max: 5,
+    required: true
+  }
 });
 
 var userSchema = mongoose.Schema({
-  name: String,
-  firstname: String,
-  lastname: String,
-  username: String,
-  password: String,
-  phone: String,
+  name: {
+    type: String,
+    required: true
+  },
+  firstname: {
+    type: String,
+    required: true
+  },
+  lastname: {
+    type: String,
+    required: true
+  },
+  username: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  phone: {
+    type: String,
+    required: true
+  },
   facebookID: String,
   facebookToken: String,
   fbrefreshToken: String,
   pictureURL: String,
-  friends: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }],
+  friends: Object,
   twitterID: String,
   twitterToken: String,
   twitterTokenSecret: String,
@@ -70,39 +143,92 @@ var userSchema = mongoose.Schema({
   linkedinID: String,
   lntoken: String,
   lnrefreshtoken: String,
-  email: String,
-  role: String,
-  industry: String,
-  location: String,
-  universityOrCompany: Boolean,
+  email: {
+    type: String,
+    required: true
+  },
+  role: {
+    type: String,
+    required: true
+  },
+  industry: {
+    type: String,
+    required: true
+  },
+  location: {
+    type: String,
+    required: true
+  },
+  universityOrCompany: {
+    type: Boolean,
+    required: true
+  },
   capital: String,
   website: String,
   blog: String,
   github: String,
-  favorite: [favoriteSchema],
-  professionals: [professionalsSchema],
-  user_survey: [useSurveySchema],
-  skill_set: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Skill'
+  favorite: {
+    type: favoriteSchema,
+    required: true
+  },
+  professionals: [{
+    type: professionalsSchema,
+    required: true
   }],
-  product_team: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Team'
-  }],
-  product_set: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product'
-  }],
-  destime: [{
-    destime_name: String,
-    goals: String,
-    sameIndustryOrNot: Boolean
-  }],
-  essence: [String],
-  userReview: Number
+  user_survey: {
+    type: useSurveySchema,
+    required: true
+  },
+  skill_set: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Skill',
+    }],
+    reuired: true
+  },
+  product_team: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Team',
+    }],
+    reuired: true
+  },
+  product_set: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product',
+    }],
+    reuired: true
+  },
+  destime: {
+    destime_name: {
+      type: String,
+      required: true
+    },
+    goals: {
+      type: String,
+      required: true
+    },
+    sameIndustryOrNot: {
+      type: Boolean,
+      required: true
+    }
+  },
+  essence: { // there should be choices as enum, come later
+    type: [String],
+    validate: [essenceValidator, '{PATH} exceeds the limit of 5']
+  },
+  userReview: {
+    type: Number,
+    min: 1,
+    max: 5,
+    required: true
+  }
 });
 
+function essenceValidator(val) {
+  return val.length <= 5;
+}
 
 userSchema.plugin(findOrCreate);
 

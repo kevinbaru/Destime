@@ -5,9 +5,18 @@ var connect = "mongodb://localhost:27017/Destime";
 mongoose.connect(connect);
 
 var contactSchema = mongoose.Schema({
-  name: String,
-  phone: String,
-  owner: String
+  name: {
+    type: String,
+    required: true
+  },
+  phone: {
+    type: String,
+    required: true
+  },
+  owner: {
+    type: String,
+    required: true
+  }
 });
 
 module.exports = mongoose.model("Contact", contactSchema);
