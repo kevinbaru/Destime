@@ -1,0 +1,276 @@
+body {
+	background-color: #0d0326;
+	font-size: 8pt;
+	padding: 0;
+	margin: 0;
+}
+
+div {
+	color: white;
+}
+
+.team-member-button {
+	background-image: linear-gradient(to right, #15f7c9, #93f155, #fde700);
+	color: black;
+	font-size: 10pt;
+	border: 0px;
+	border-radius: 3px;
+	border-style: solid;
+	width: 48%;
+	height: 50px;
+	text-transform: uppercase;
+}
+
+.button-holder-left {
+	float: left;
+	width: 50%;
+	padding-right: 1%;
+	box-sizing: border-box;
+}
+
+.button-holder-right {
+	float: right;
+	width: 50%;
+	padding-left: 1%;
+	box-sizing: border-box;
+}
+
+.button-left {
+	float: left;
+}
+
+.button-right {
+	float: right;
+}
+
+#nav {
+	
+}
+
+#projectAttributes {
+	padding-top: 30px;
+	height: 250px;
+}
+
+#memberButtons {
+	padding-top: 40px;
+	
+}
+
+.attributeLine {
+	height: 10px;
+	border-bottom: 2px solid transparent;
+	border-image: linear-gradient(to right, #15f7c9, #93f155, #fde700);
+	border-image-slice: 1;
+}
+
+.no-padding {
+	padding: 0px;
+	margin: 0px;
+}
+
+.creation-window {
+	width: 100%;
+	height: 100%;
+	padding: 40px 175px;
+	box-sizing: border-box;
+
+}
+
+.project-button {
+	height: 250px;
+	width: 49%;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #0d0326;
+	font-size: 18pt;
+	text-transform: uppercase;
+}
+
+.project-button-create {
+	background-color: #15f7c9;
+	float: left;
+}
+
+.project-button-join {
+	background-color: #fde700;
+	float: right;
+}
+
+.project-button-holder {
+	height: 100%;
+	
+}
+
+.project-creation-description {
+	padding-top: 30px;
+	padding-bottom: 100px;
+	text-align: center;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#project-creation-title {
+	height: 60px;
+	text-transform: uppercase;
+}
+
+/*	CREATE AND JOIN PAGES */
+
+.input-window {
+	padding: 0px 200px;
+}
+
+#form-create {
+	margin-bottom: 1%;
+}
+
+#form-create input {
+	width: 100%;
+	height: 25px;
+	border-image: linear-gradient(to right, #15f7c9, #93f155, #fde700);
+	border-image-slice: 1;
+	border-width: 2px;
+	background-color: #0d0326;
+	color: white;
+	padding: 4px 0px 4px 0px;
+	margin-bottom: 1%;
+}
+
+#form-create .select-input {
+	width: 75px;
+	height: 25px;
+	border-color: #15f7c9;
+	border-image-slice: 1;
+	border-width: 2px;
+	background-color: #0d0326;
+	color: white;
+	padding: 4px 0px 4px 0px;
+	margin: 0;
+	margin-bottom: 1%;
+}
+
+/*
+#form-create #objectives {
+	width: 85%;
+}
+*/
+
+#form-create textarea {
+	width: 99%;;
+	height: 50px;
+	border-image: linear-gradient(to right, #15f7c9, #93f155, #fde700);
+	border-width: 2px;
+	border-image-slice: 1;
+	background-color: #0d0326;
+	color: white;
+	padding-left: 5px;
+	margin-bottom: 1%;
+}
+
+
+#form-create #photo {
+	width: 48%;
+	float: left;
+	border-image: linear-gradient(to right, #15f7c9, #93f155);
+	border-width: 2px;
+	border-image-slice: 1;
+}
+#form-create #title {
+	width: 48%;
+	float: right;
+	margin-right: 0px;
+	border-image: linear-gradient(to right, #93f155, #fde700);
+	border-width: 2px;
+	border-image-slice: 1;
+}
+
+.launch-cancel-holder {
+	height: 20%;
+	padding-top: 3%;
+	clear: both;
+}
+
+.launch-cancel-holder .cancel-button {
+	width: 24%;
+}
+
+.launch-cancel-holder .launch-button {
+	width: 40%;
+	margin-left: 14%;
+	margin-right: 3%;
+}
+
+.project-description-create {
+	background-color: rgb(86, 253, 184);
+	text-align: center;
+	padding: 15px 200px;
+	color: #0d0326;
+	margin-bottom: 40px;
+
+}
+
+.project-description-join {
+	background-color: rgb(255, 236, 1);
+	text-align: center;
+	padding: 15px 200px;
+	color: #0d0326;
+	margin-bottom: 40px;
+
+}
+
+.project-description-create p {
+	font-size: 10pt;
+}
+
+.project-description-join p {
+	font-size: 10pt;
+}
+
+.page-title {
+	text-transform: uppercase;
+}
+
+#tag-holder {
+    width: 100%;
+	padding-top: 0px;
+	padding-bottom: 5px;
+}
+
+.objective-tag {
+    background-color: rgb(86, 253, 184);
+    color: #0d0326;
+    font-size: 16pt;
+    padding: 2px;
+    margin-right: 4px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#add-objective {
+	background-color: transparent;
+	color: #fde700;
+	border: 0;
+	position: absolute;
+	top: 16%;
+	right: 0px;
+}
+
+.objective-div {
+	width: 100%;
+	position: relative;
+}
+
+input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+select::-ms-expand {
+    display: none;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang-"en">
+    <head>
+        <meta charset="utf-8">
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <script src="script_project_create.js" defer></script>
+        <title>Create</title>
+        
+    </head>
+    <body>
+        <div id="nav"></div>
+        </div>
+        <div class="project-description-create">
+            <h1 class="page-title">Create your Morsel</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consequat egestas urna sed iaculis. Sed feugiat efficitur nisi, in condimentum nisi viverra vitae. Donec sodales rutrum ex, id lacinia mauris suscipit id. Etiam eget convallis mi. Proin quis diam ligula.</p>
+        </div>
+        <div class="input-window ">
+            <form id="form-create" autocomplete="off">
+            
+                <input type="text" id="industry" placeholder="INDUSTRY" list="industries">
+                <datalist id="industries">
+                    <option value="Tech - Software"></option>
+                    <option value="Tech - Hardware"></option>
+                    <option value="Entertainment - TV"></option>
+                    <option value="Entertainment - Film"></option>
+                    <option value="Entertainment - Music"></option>
+                    <option value="Art"></option>
+                    <option value="Fashion"></option>
+                    <option value="Beauty"></option>
+                </datalist>
+                
+                <input type="text" id="morsel-type" placeholder="MORSEL TYPE" list="morsels">
+                <datalist id="morsels">
+                    
+                </datalist>
+                
+                <input type="text" id="scope" placeholder="SCOPE">
+                
+                <div class="objective-div">
+                    <input type="text" id="objectives" placeholder="OBJECTIVE">
+                    <button id="add-objective" type="button">&#10133;</button>
+                </div>
+                <div id="tag-holder">
+                </div>
+                
+                <input type="text" id="essence" placeholder="ESSENCE" list="essences">
+                <datalist id="essences">
+                    <option value="Sample Essence"></option>
+                </datalist>
+                
+                <input type="text" id="destime" placeholder="DESTIME">
+                
+                <select class="select-input">
+                    <option value="" disabled selected>Team Size</option>
+                    <option value="1-5">1-5</option>
+                    <option value="6-10">6-10</option>
+                    <option value="10-20">10-20</option>
+                    <option value="20+">20+</option>
+                </select>
+                
+                <!--
+                <input type="text" id="photo" placeholder="PHOTO UPLOAD">
+                <input type="text" id="title" placeholder="TITLE GOES HERE">
+                <textarea id="essence" placeholder="ESSENCE" class="bigger-input"></textarea>
+                <textarea id="objectives" placeholder="OBJECTIVES" class="bigger-input"></textarea>
+                <textarea id="destime" placeholder="DESTIME" class="bigger-input"></textarea>
+                <textarea id="alliances" placeholder="CURRENT ALLIANCES" class="bigger-input"></textarea>
+                
+                -->
+            </form>
+            <div class="project-button-holder">
+                <div class="button-holder-left">
+			        <button class="team-member-button button-left clearfix">Maker</button>
+		            <button class="team-member-button button-right">Money</button>
+	            </div>
+	            <div class="button-holder-right">
+		            <button class="team-member-button button-left">Maestro</button>
+		            <button class="team-member-button button-right">Marvel</button>
+		        </div>
+		    </div>
+	        <div class="launch-cancel-holder">
+	            <button class="team-member-button launch-button">Launch</button>
+	            <button class="team-member-button cancel-button">Cancel</button>
+	        </div>
+            
+        </div>
+    </body>
+    
+</html>

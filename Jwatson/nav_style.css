@@ -1,0 +1,45 @@
+body {
+	margin: 0px;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.navbar {
+	background-color: darkBlue;
+	width: 100%;
+	margin: 0px;
+	padding: 0;
+}
+
+nav .nav-left {
+	float: left;
+}
+
+nav .nav-right {
+	float: right;
+}
+
+nav .nav-right .nav-member {
+	display: inline-block;
+	padding: 4px;
+	
+}
