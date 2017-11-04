@@ -203,11 +203,11 @@ var userTest = new models.User({
     sameIndustryOrNot: true
   },
   essence: [
-    'happy',
-    'positive',
-    'strong mind',
-    'hardworking',
-    'quick learner'
+    'Friendly',
+    'Visionary',
+    'Theoretical',
+    'Fast Paced',
+    'Competent'
   ],
   userReview: 5
 });
@@ -228,7 +228,7 @@ var teamTest = new models.Team({
 var productTest = new models.Product({
   industry: 'Software',
   description: 'Best product ever',
-  Product_Phase: 3,
+  Product_Phase: 'Production',
   LevelDifficulty: 'Hard',
   estimated_duration: '6 months',
   actual_duration: '9 months',
@@ -241,7 +241,7 @@ var productTest = new models.Product({
 var skillTest = new models.Skill({
   skillName: 'Java',
   experienceTime: '5 years',
-  degree: 'Master'
+  degree: 'Gear'
 });
 
 var recommendationTest = new models.Recommendation({

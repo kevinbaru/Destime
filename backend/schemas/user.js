@@ -214,9 +214,24 @@ var userSchema = mongoose.Schema({
       required: true
     }
   },
-  essence: { // there should be choices as enum, come later
+  essence: {
     type: [String],
-    validate: [essenceValidator, '{PATH} exceeds the limit of 5']
+    enum: ['Friendly', 'Visionary', 'Theoretical', 'Fast Paced', 'Competent',
+             'Adaptable', 'Stylish', 'Creative', 'Reserved', 'Laid Back', 'Lover',
+             'Fighter', 'Responsible', 'Idealistic', 'Doer', 'Chivalrous', 'Heroic',
+             'Brave', 'Honorable', 'Dependable', 'Hard Working', 'Goal Oriented',
+             'Task Master', 'Intuitive', 'Entrepreneurial', 'Crafty', 'Analytical',
+             'WYSIWYG', 'Loyal', 'Kind', 'Dutiful', 'Selfless', 'Perceptive',
+             'Devoted', 'Observant', 'Conscientious', 'Leader', 'Open-Minded',
+             'Performer', 'Gifted', 'Musical', 'Thespian', 'Original', 'Well-Rounded',
+             'Tenacious', 'Determined', 'Persistent', 'Assertive', 'Outspoken',
+             'Artsy', 'Peaceful', 'Athletic', 'Traditional', 'Practical', 'Knowledgable',
+             'Blessed', 'Quick', 'Funny', 'Opinionated', 'Optimistic', 'Cautious'],
+    validate: {
+      validator: function essenceValidator(val) {
+        return val.length <= 5;
+      }
+    }
   },
   userReview: {
     type: Number,
@@ -226,9 +241,7 @@ var userSchema = mongoose.Schema({
   }
 });
 
-function essenceValidator(val) {
-  return val.length <= 5;
-}
+
 
 userSchema.plugin(findOrCreate);
 

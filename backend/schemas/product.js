@@ -14,8 +14,9 @@ var productSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  Product_Phase: {  // there should be enum, come later
-    type: Number,
+  Product_Phase: {
+    type: String,
+    emum: ['Idea', 'Product', 'Launch', 'Growth', 'Exit'],
     required: true
   },
   LevelDifficulty: {

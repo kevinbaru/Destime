@@ -13,8 +13,9 @@ var skillSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  degree: { // better use enum, come later
+  degree: {
     type: String,
+    enum: ['Here', 'Gear', 'Steer', 'Near', 'Pier'],
     required: true
   }
 });
