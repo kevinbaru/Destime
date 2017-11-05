@@ -5,22 +5,27 @@ var validator = require('validator');
 var cors = require('cors')
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
+var models = require('../models');
+var User = models.User;
 function validateSignupForm(payload) {
   const errors = {};
   let isFormValid = true;
   let message = '';
+  if(!payload) {
+    errors.payload ='request not read properly';
+  }
 
   if (!payload || typeof payload.username !== 'string' || !validator.isEmail(payload.username)) {
     isFormValid = false;
     errors.username = 'Please provide a correct username.';
   }
 
-  if (!payload || payload.password.trim().length < 8) {
+  if (!payload || !payload.password) {
     isFormValid = false;
     errors.password = 'Password must have at least 8 characters.';
   }
 
-  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
+  if (!payload || !payload.name) {
     isFormValid = false;
     errors.name = 'Please provide your name.';
   }
@@ -80,15 +85,15 @@ module.exports = function(passport) {
 
 
   router.post('/login', passport.authenticate('local',{'failureRedirect':'/failure'}), function(req,res) {
-
+    console.log("User login succeeded");
    res.status(200).json({success: true});
  });
 
   router.get('/failure', function(req, res) {
-    console.log('resss')
+    console.log("User login failed");
     res.json({
-      success:false,
-      error:'faled to sign in'
+      success: false,
+      error: "Invalid login credentials"
     })
   });
 
@@ -127,6 +132,26 @@ module.exports = function(passport) {
   //     res.redirect('/');
   //   }
   // );
+  router.get('/auth/google',
+  passport.authenticate('google', { display: 'popup', scope: ['profile', 'email'] }));
 
+  router.get('/user/signin/google/callback',
+    passport.authenticate('google', { failureRedirect: '/failure' }),
+    function (req, res) {
+      // Successful authentication, redirect home.
+      res.redirect('/');
+    });
+
+    router.post('/signin/google', function (req, res) {
+
+      User.findOne({googleID: req.body.profileObj.googleId}, function(err, user) {
+        if(!user) {
+          res.json({success: false, error: "No user with that google account"});
+        } else{
+          res.json({success: true, user: user});
+        }
+      });
+    })
+ 
   return router;
 }

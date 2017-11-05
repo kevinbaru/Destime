@@ -120,49 +120,35 @@ export function loginTwitter(creds) {
 
 export function loginGoogle(creds) {
 
+  console.log('creddds',creds)
+
+  let config = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(creds)
+    }
+
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
 
-    return fetch('http://localhost:3000/auth/google')
-      .then(response =>
-        response.json().then(user => ({ user, response }))
-            ).then(({ user, response }) =>  {
-        if (!response.success) {
+    return fetch('http://localhost:3000/signin/google', config)
+      .then(response =>response.json())
+      .then(user =>  {
+        if (!user.success) {
           // If there was a problem, we want to
           // dispatch the error condition
           dispatch(loginError(user.message))
           return Promise.reject(user)
         } else {
           // If login was successful, set the token in local storage
-          localStorage.setItem('id_token', user.id_token)
-          localStorage.setItem('id_token', user.access_token)
-          // Dispatch the success action
-          dispatch(receiveLogin(user))
+          localStorage.setItem('id_token', user._id)
+          console.log("Success: ", user)
 
-        }
-      }).catch(err => console.log("Error: ", err))
-  }
-}
 
-export function loginLinkedIn(creds) {
-  return dispatch => {
-    // We dispatch requestLogin to kickoff the call to the API
-    dispatch(requestLogin(creds))
-
-    return fetch('http://localhost:3000/auth/LinkedIn')
-      .then(response =>
-        response.json().then(user => ({ user, response }))
-            ).then(({ user, response }) =>  {
-        if (!response.success) {
-          // If there was a problem, we want to
-          // dispatch the error condition
-          dispatch(loginError(user.message))
-          return Promise.reject(user)
-        } else {
-          // If login was successful, set the token in local storage
-          localStorage.setItem('id_token', user.id_token)
-          localStorage.setItem('id_token', user.access_token)
           // Dispatch the success action
           dispatch(receiveLogin(user))
 

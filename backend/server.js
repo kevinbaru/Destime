@@ -153,6 +153,7 @@ var userTest = new models.User({
   password: '123456',
   phone: '123-456-789',
   email: 'johnsmith@desti.me',
+  googleID: "100996539769728572545",
   role: 'UFO',
   industry: 'Internet',
   location: 'NYC',

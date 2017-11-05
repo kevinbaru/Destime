@@ -1,8 +1,10 @@
 import React from 'react';
+import GoogleLogin from 'react-google-login';
 import {Proptypes} from 'react';
 import { connect } from 'react-redux';
 import styles from '../../stylesheets/SignUp.css'
-import {loginUser, LoginLinkedin, LoginFacebook,LoginGoogle} from '../actions/login';
+import auth from '../config/auth.js'
+import {loginUser, loginLinkedin, loginFacebook,loginGoogle} from '../actions/login';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -11,6 +13,8 @@ class SignIn extends React.Component {
                submitted:false}
   this.handleChange = this.handleChange.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
+  this.handleGoogleSuccess = this.handleGoogleSuccess.bind(this)
+  this.handleGoogleFail = this.handleGoogleFail.bind(this)
   }
 
 
@@ -34,8 +38,17 @@ class SignIn extends React.Component {
      console.log('jamaicaaaa')
      dispatch(loginUser(user))
    }
-
  }
+  handleGoogleSuccess(response) {
+    const { dispatch } = this.props;
+    dispatch(loginGoogle(response));
+}
+
+  handleGoogleFail(response) {
+    console.log("Failed");
+    console.log(response);
+}
+
   render() {
     const { isFetching  } = this.props;
     const { user, submitted } = this.state;
@@ -55,7 +68,7 @@ class SignIn extends React.Component {
                     <button onClick={()=>onfb()} className="social-button facebook">Facebook</button>
                     <button onClick={()=>onLn()} className="social-button linkedin">LinkedIn</button>
                     <button onClick={()=>onTw()} className="social-button twitter">Twitter</button>
-                    <button  onClick={()=>onGgl()} className="social-button google">Google</button>
+                    <GoogleLogin className="social-button google" clientId={auth.googleClientID} buttonText="Google" onSuccess={this.handleGoogleSuccess} onFailure={this.handleGoogleFail}/>
                   </div>
               </div>
               <div>
@@ -80,14 +93,14 @@ class SignIn extends React.Component {
         };
     };
 
-    // const mapDispatchToProps = (dispatch) => {
-    //     return {
+    const mapDispatchToProps = (dispatch) => {
+        return {
     //         onfb:() => dispatch(LoginFacebook()),
     //         ontw:() => dispatch(LoginTwitter()),
     //         onLn:() => dispatch(LoginLinkedIn()),
-    //         onGgl:() => dispatch(LoginGoogle()),
-    //     };
-    // };
+            onGgl:() => dispatch(LoginGoogle()),
+        };
+    };
     //export default SignUp
     export default connect(
         mapStateToProps,

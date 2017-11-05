@@ -88,24 +88,11 @@ module.exports = function(passport) {
                 if (err) {
                     return done(err);
                 }
-                // create a new account with this Facebook ID
+
                 if (!user) {
-                    var newUser = new User({
-                        firstname: profile.name.givenName,
-                        lastname: profile.name.familyName,
-                        email: profile.emails[0].value,
-                        googleID: profile.id,
-                        pictureURL: profile.photos[0].value,
-                        gGtoken:token,
-                        gGrefreshToken:refreshToken,
-                    });
-                    newUser.save(function(err, result) {
-                        if (err) {
-                            return done(err);
-                        }
-                        return done(null, newUser);
-                    });
+                    done(null, false, {message: "No user registered with that google account"});
                 }
+
                 else {
                     return done(null, user);
                 }
