@@ -25,8 +25,6 @@ function loginError(message) {
 }
 
 export function loginUser(creds) {
-  console.log('creddds',creds)
-
   let config = {
       method: 'POST',
       headers: {
@@ -118,9 +116,12 @@ export function loginTwitter(creds) {
   }
 }
 
+// Function for logging into google.
+// Receive credentials from react-google-auth, 
+// and then send them over to the backend server to process
+// Then, use the response from the request to determine 
+// if the user was properly authenticated.
 export function loginGoogle(creds) {
-
-  console.log('creddds',creds)
 
   let config = {
       method: 'POST',
@@ -153,6 +154,7 @@ export function loginGoogle(creds) {
           dispatch(receiveLogin(user))
 
         }
+        //user login was not successful
       }).catch(err => console.log("Error: ", err))
   }
 }

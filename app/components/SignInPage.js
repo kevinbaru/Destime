@@ -39,11 +39,13 @@ class SignIn extends React.Component {
      dispatch(loginUser(user))
    }
  }
-  handleGoogleSuccess(response) {
+  // User entered valid google login credentials. Proceed to verification action
+  handleGoogleSuccess(creds) {
     const { dispatch } = this.props;
-    dispatch(loginGoogle(response));
+    dispatch(loginGoogle(creds));
 }
 
+  // User did not enter valid google login credentials. Log the response in the console 
   handleGoogleFail(response) {
     console.log("Failed");
     console.log(response);
@@ -68,6 +70,9 @@ class SignIn extends React.Component {
                     <button onClick={()=>onfb()} className="social-button facebook">Facebook</button>
                     <button onClick={()=>onLn()} className="social-button linkedin">LinkedIn</button>
                     <button onClick={()=>onTw()} className="social-button twitter">Twitter</button>
+                    {/* React component for google authentication. Will make a popup window that
+                        user can use to login with their google account. If the credentials are valid,
+                        proceed to handleGoogleSuccess function, else go to handleGoogleFail function */}
                     <GoogleLogin className="social-button google" clientId={auth.googleClientID} buttonText="Google" onSuccess={this.handleGoogleSuccess} onFailure={this.handleGoogleFail}/>
                   </div>
               </div>
@@ -93,14 +98,14 @@ class SignIn extends React.Component {
         };
     };
 
-    const mapDispatchToProps = (dispatch) => {
-        return {
-    //         onfb:() => dispatch(LoginFacebook()),
-    //         ontw:() => dispatch(LoginTwitter()),
-    //         onLn:() => dispatch(LoginLinkedIn()),
-            onGgl:() => dispatch(LoginGoogle()),
-        };
-    };
+    // const mapDispatchToProps = (dispatch) => {
+    //     return {
+    //          onfb:() => dispatch(LoginFacebook()),
+    //          ontw:() => dispatch(LoginTwitter()),
+    //          onLn:() => dispatch(LoginLinkedIn()),
+    //          onGgl:() => dispatch(LoginGoogle()),
+    //     };
+    // };
     //export default SignUp
     export default connect(
         mapStateToProps,
