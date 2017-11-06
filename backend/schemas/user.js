@@ -155,6 +155,10 @@ var userSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  ifMaster: {
+    type: Boolean,
+    required: true
+  },
   location: {
     type: String,
     required: true
@@ -227,9 +231,10 @@ var userSchema = mongoose.Schema({
              'Tenacious', 'Determined', 'Persistent', 'Assertive', 'Outspoken',
              'Artsy', 'Peaceful', 'Athletic', 'Traditional', 'Practical', 'Knowledgable',
              'Blessed', 'Quick', 'Funny', 'Opinionated', 'Optimistic', 'Cautious'],
+    required: true,
     validate: {
       validator: function essenceValidator(val) {
-        return val.length <= 5;
+        return val.length == 5;
       }
     }
   },
@@ -238,6 +243,17 @@ var userSchema = mongoose.Schema({
     min: 1,
     max: 5,
     required: true
+  },
+  user_title: {
+    type: [String],
+    enum: ['The Duty Fulfiller', 'The Mechanic', 'The Nurturer', 'The Artist',
+           'The Protector', 'The Idealist', 'The Scientist', 'The Thinker',
+           'The Performer', 'The Caregiver', 'The Inspirer', 'The Doer',
+           'The Guardian', 'The Giver', 'The Visionary', 'The Executive'],
+    reuired: true,
+    validate: function titleValidator(val) {
+      return val.length == 5 ;
+    }
   }
 });
 

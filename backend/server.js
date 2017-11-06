@@ -155,6 +155,7 @@ var userTest = new models.User({
   email: 'johnsmith@desti.me',
   role: 'UFO',
   industry: 'Internet',
+  ifMaster: true,
   location: 'NYC',
   universityOrCompany: true,
   favorite: {
@@ -209,7 +210,14 @@ var userTest = new models.User({
     'Fast Paced',
     'Competent'
   ],
-  userReview: 5
+  userReview: 5,
+  user_title: [
+    'The Duty Fulfiller',
+    'The Mechanic',
+    'The Nurturer',
+    'The Artist',
+    'The Protector'
+  ]
 });
 
 var teamTest = new models.Team({
