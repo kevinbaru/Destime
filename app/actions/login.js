@@ -62,29 +62,45 @@ export function loginUser(creds) {
   }
 }
 
+// Function for logging into facebook.
+// Receive credentials from react-facebook-auth, 
+// and then send them over to the backend server to process
+// Then, use the response from the request to determine 
+// if the user was properly authenticated.
 export function loginFb(creds) {
+
+  let config = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(creds)
+    }
 
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
 
-    return fetch('http://localhost:3000/auth/fb')
-      .then(response =>
-        response.json().then(user => ({ user, response }))
-            ).then(({ user, response }) =>  {
-        if (!response.success) {
+    return fetch('http://localhost:3000/signin/fb', config)
+      .then(response =>response.json())
+      .then(user =>  {
+        if (!user.success) {
           // If there was a problem, we want to
           // dispatch the error condition
           dispatch(loginError(user.message))
           return Promise.reject(user)
         } else {
           // If login was successful, set the token in local storage
-          localStorage.setItem('id_token', user.id_token)
-          localStorage.setItem('id_token', user.access_token)
+          localStorage.setItem('id_token', user._id)
+          console.log("Success: ", user)
+
+
           // Dispatch the success action
           dispatch(receiveLogin(user))
 
         }
+        //user login was not successful
       }).catch(err => console.log("Error: ", err))
   }
 }

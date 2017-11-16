@@ -1,10 +1,11 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
 import {Proptypes} from 'react';
 import { connect } from 'react-redux';
 import styles from '../../stylesheets/SignUp.css'
 import auth from '../config/auth.js'
-import {loginUser, loginLinkedin, loginFacebook,loginGoogle} from '../actions/login';
+import {loginUser, loginLinkedin, loginFb,loginGoogle} from '../actions/login';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class SignIn extends React.Component {
   this.handleChange = this.handleChange.bind(this)
   this.handleSubmit = this.handleSubmit.bind(this)
   this.handleGoogleSuccess = this.handleGoogleSuccess.bind(this)
-  this.handleGoogleFail = this.handleGoogleFail.bind(this)
+  this.handleFacebookSuccess = this.handleFacebookSuccess.bind(this)
+  this.handleSocialMediaFail = this.handleSocialMediaFail.bind(this)
   }
 
 
@@ -45,8 +47,14 @@ class SignIn extends React.Component {
     dispatch(loginGoogle(creds));
 }
 
-  // User did not enter valid google login credentials. Log the response in the console 
-  handleGoogleFail(response) {
+  // User entered valid facebook login credentials. Proceed to verification action
+  handleFacebookSuccess(creds) {
+    const { dispatch } = this.props;
+    dispatch(loginFb(creds));
+}
+
+  // User did not enter valid login credentials. Log the response in the console 
+  handleSocialMediaFail(response) {
     console.log("Failed");
     console.log(response);
 }
@@ -67,13 +75,14 @@ class SignIn extends React.Component {
             </div>
               <div className="inner-container social">
                   <div className="inner-inner-container">
-                    <button onClick={()=>onfb()} className="social-button facebook">Facebook</button>
+                    {/* <button onClick={()=>onfb()} className="social-button facebook">Facebook</button> */}
+                    <FacebookLogin cssClass="social-button facebook" textButton = "Facebook" appId="368588603579402" callback={this.handleFacebookSuccess} onFailure={this.handleSocialMediaFail} />
                     <button onClick={()=>onLn()} className="social-button linkedin">LinkedIn</button>
                     <button onClick={()=>onTw()} className="social-button twitter">Twitter</button>
                     {/* React component for google authentication. Will make a popup window that
                         user can use to login with their google account. If the credentials are valid,
-                        proceed to handleGoogleSuccess function, else go to handleGoogleFail function */}
-                    <GoogleLogin className="social-button google" clientId={auth.googleClientID} buttonText="Google" onSuccess={this.handleGoogleSuccess} onFailure={this.handleGoogleFail}/>
+                        proceed to handleGoogleSuccess function, else go to handleSocialMediaFail function */}
+                    <GoogleLogin className="social-button google" clientId={auth.googleClientID} buttonText="Google" onSuccess={this.handleGoogleSuccess} onFailure={this.handleSocialMediaFail}/>
                   </div>
               </div>
               <div>
