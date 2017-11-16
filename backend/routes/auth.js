@@ -142,23 +142,38 @@ module.exports = function(passport) {
     function (req, res) {
       // Successful authentication, redirect home.
       res.redirect('/');
+  });
+
+  // Endpoint for react-google-auth. If a user enters a valid google account,
+  // check the database for a user associated with the google id of the verified
+  // user. If it succeeds, return success: true and the and associated user 
+  router.post('/signin/google', function (req, res) {
+
+    User.findOne({googleID: req.body.profileObj.googleId}, function(err, user) {
+      if(err) {
+        res.json({success: false, error: err});
+      } else if(!user) {
+        res.json({success: false, error: "No user with that google account"});
+      } else{
+        res.json({success: true, user: user});
+      }
     });
+  });
 
-    // Endpoint for react-google-auth. If a user enters a valid google account,
-    // check the database for a user associated with the google id of the verified
-    // user. If it succeeds, return success: true and the and associated user 
-    router.post('/signin/google', function (req, res) {
+  // Endpoint for react-facebook-auth. If a user enters a valid facebook account,
+  // check the database for a user associated with the facebook id of the verified
+  // user. If it succeeds, return success: true and the and associated user 
+  router.post('/signin/fb', function (req, res) {
 
-      User.findOne({googleID: req.body.profileObj.googleId}, function(err, user) {
-        if(err) {
-          res.json({success: false, error: err});
-        } else if(!user) {
-          res.json({success: false, error: "No user with that google account"});
-        } else{
-          res.json({success: true, user: user});
-        }
-      });
-    })
- 
+    User.findOne({facebookID: req.body.id}, function(err, user) {
+      if(err) {
+        res.json({success: false, error: err});
+      } else if(!user) {
+        res.json({success: false, error: "No user with that facebook account"});
+      } else{
+        res.json({success: true, user: user});
+      }
+    });
+  });
   return router;
 }

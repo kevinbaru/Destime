@@ -62,29 +62,45 @@ export function loginUser(creds) {
   }
 }
 
-export function loginFb(creds) {
+// Function for logging into facebook.
+// Receive credentials from react-facebook-auth, 
+// and then send them over to the backend server to process
+// Then, use the response from the request to determine 
+// if the user was properly authenticated.
+export function loginFb(fbAuth) {
+
+  let config = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(fbAuth)
+    }
 
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
-    dispatch(requestLogin(creds))
+    dispatch(requestLogin(fbAuth))
 
-    return fetch('http://localhost:3000/auth/fb')
-      .then(response =>
-        response.json().then(user => ({ user, response }))
-            ).then(({ user, response }) =>  {
-        if (!response.success) {
+    return fetch('http://localhost:3000/signin/fb', config)
+      .then(response =>response.json())
+      .then(user =>  {
+        if (!user.success) {
           // If there was a problem, we want to
           // dispatch the error condition
           dispatch(loginError(user.message))
           return Promise.reject(user)
         } else {
           // If login was successful, set the token in local storage
-          localStorage.setItem('id_token', user.id_token)
-          localStorage.setItem('id_token', user.access_token)
+          localStorage.setItem('id_token', user._id)
+          console.log("Success: ", user)
+
+
           // Dispatch the success action
           dispatch(receiveLogin(user))
 
         }
+        //user login was not successful
       }).catch(err => console.log("Error: ", err))
   }
 }
@@ -121,7 +137,7 @@ export function loginTwitter(creds) {
 // and then send them over to the backend server to process
 // Then, use the response from the request to determine 
 // if the user was properly authenticated.
-export function loginGoogle(creds) {
+export function loginGoogle(googleAuth) {
 
   let config = {
       method: 'POST',
@@ -129,12 +145,12 @@ export function loginGoogle(creds) {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(creds)
+      body: JSON.stringify(googleAuth)
     }
 
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
-    dispatch(requestLogin(creds))
+    dispatch(requestLogin(googleAuth))
 
     return fetch('http://localhost:3000/signin/google', config)
       .then(response =>response.json())
