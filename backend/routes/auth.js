@@ -165,7 +165,11 @@ module.exports = function(passport) {
   // user. If it succeeds, return success: true and the and associated user 
   router.post('/signin/fb', function (req, res) {
 
+<<<<<<< HEAD
     User.findOne({facebookID: req.body.id}, function(err, user) {
+=======
+    User.findOne({facebookID: req.body.profileObj.facebookId}, function(err, user) {
+>>>>>>> 7c07ae3e1b462bbe4c32ffb72e01d433e80bd711
       if(err) {
         res.json({success: false, error: err});
       } else if(!user) {

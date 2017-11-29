@@ -78,6 +78,15 @@ export function loginFb(fbAuth) {
       body: JSON.stringify(fbAuth)
     }
 
+  let config = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(creds)
+    }
+
   return dispatch => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(fbAuth))
