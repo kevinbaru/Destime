@@ -48,15 +48,9 @@ class SignIn extends React.Component {
 }
 
   // User entered valid facebook login credentials. Proceed to verification action
-<<<<<<< HEAD
   handleFacebookSuccess(fbAuth) {
     const { dispatch } = this.props;
     dispatch(loginFb(fbAuth));
-=======
-  handleFacebookSuccess(creds) {
-    const { dispatch } = this.props;
-    dispatch(loginFb(creds));
->>>>>>> 7c07ae3e1b462bbe4c32ffb72e01d433e80bd711
 }
 
   // User did not enter valid login credentials. Log the response in the console 
@@ -82,11 +76,7 @@ class SignIn extends React.Component {
               <div className="inner-container social">
                   <div className="inner-inner-container">
                     {/* <button onClick={()=>onfb()} className="social-button facebook">Facebook</button> */}
-<<<<<<< HEAD
                     <FacebookLogin cssClass="social-button facebook" textButton = "Facebook" appId={auth.fbClientID} callback={this.handleFacebookSuccess} onFailure={this.handleSocialMediaFail} />
-=======
-                    <FacebookLogin cssClass="social-button facebook" textButton = "Facebook" appId="368588603579402" callback={this.handleFacebookSuccess} onFailure={this.handleSocialMediaFail} />
->>>>>>> 7c07ae3e1b462bbe4c32ffb72e01d433e80bd711
                     <button onClick={()=>onLn()} className="social-button linkedin">LinkedIn</button>
                     <button onClick={()=>onTw()} className="social-button twitter">Twitter</button>
                     {/* React component for google authentication. Will make a popup window that
