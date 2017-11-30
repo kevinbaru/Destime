@@ -5,6 +5,9 @@ import {Proptypes} from 'react';
 import { connect } from 'react-redux';
 import styles from '../../stylesheets/SignUp.css'
 import auth from '../config/auth.js'
+import SocialButton from './SocialButton'
+import { OldSocialLogin as SocialLogin } from 'react-social-login'
+import LinkedIn from 'react-linkedin-login'
 import {loginUser, loginLinkedin, loginFb,loginGoogle} from '../actions/login';
 
 class SignIn extends React.Component {
@@ -16,6 +19,7 @@ class SignIn extends React.Component {
   this.handleSubmit = this.handleSubmit.bind(this)
   this.handleGoogleSuccess = this.handleGoogleSuccess.bind(this)
   this.handleFacebookSuccess = this.handleFacebookSuccess.bind(this)
+  this.handleLinkedIn = this.handleLinkedIn.bind(this)
   this.handleSocialMediaFail = this.handleSocialMediaFail.bind(this)
   }
 
@@ -53,11 +57,25 @@ class SignIn extends React.Component {
     dispatch(loginFb(fbAuth));
 }
 
+  //User entered valid linkedin login credentials. Proceed to verification action
+  handleLinkedIn() {
+    var authWin = window.open('https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77a0gjc8r9c5g0&redirect_uri=http://localhost:3000/auth/linkedin&state=DCEeFWf45A53sdfKef424&scope=r_basicprofile','popUpWindow','height=500,width=500,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes' );
+  }
+
   // User did not enter valid login credentials. Log the response in the console 
   handleSocialMediaFail(response) {
     console.log("Failed");
-    console.log(response);
+
+    
 }
+
+  componentDidMount() {
+    window.addEventListener("message", function(e) {
+      if(e.origin == 'http://localhost:3000') {
+        console.log(e.data);
+    }
+    }, false);
+  }
 
   render() {
     const { isFetching  } = this.props;
@@ -77,7 +95,10 @@ class SignIn extends React.Component {
                   <div className="inner-inner-container">
                     {/* <button onClick={()=>onfb()} className="social-button facebook">Facebook</button> */}
                     <FacebookLogin cssClass="social-button facebook" textButton = "Facebook" appId={auth.fbClientID} callback={this.handleFacebookSuccess} onFailure={this.handleSocialMediaFail} />
-                    <button onClick={()=>onLn()} className="social-button linkedin">LinkedIn</button>
+                    {/* <LinkedIn className="social-button linkedin" clientId={auth.linkedinClientID} callback={this.handleLinkedInSuccess} text='LinkedIn' /> */}
+                    <button onClick={this.handleLinkedIn} className="social-button linkedin">LinkedIn</button>
+                    {/* <SocialButton className="social-button google" provider='google' appId={auth.googleClientID} onLoginSuccess={this.handleLinkedIn} onLoginFailure={this.handleSocialMediaFail} onLogoutSuccess={this.handleSocialMediaFail}> LinkedIn </SocialButton> */}
+                    {/* <SocialLogin className="social-button linkedin" provider='linkedin' appId='77a0gjc8r9c5g0' callback={this.handleLinkedInSuccess} > LinkedIn </SocialLogin> */}
                     <button onClick={()=>onTw()} className="social-button twitter">Twitter</button>
                     {/* React component for google authentication. Will make a popup window that
                         user can use to login with their google account. If the credentials are valid,

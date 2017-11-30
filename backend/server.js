@@ -121,6 +121,9 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
+
+
 // error handlers
 
 // development error handler
@@ -144,6 +147,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
 
 var userTest = new models.User({
   name: 'John Smith',

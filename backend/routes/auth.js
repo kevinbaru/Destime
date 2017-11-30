@@ -7,6 +7,7 @@ var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var models = require('../models');
 var User = models.User;
+var request = require('request');
 function validateSignupForm(payload) {
   const errors = {};
   let isFormValid = true;
@@ -132,6 +133,20 @@ module.exports = function(passport) {
   //     res.redirect('/');
   //   }
   // );
+  router.get('/auth/linkedin', function(req, response) {
+    console.log(req.query.code);
+    var form = {form:{
+      grant_type: 'authorization_code',
+      code: req.query.code,
+      redirect_uri: 'http://localhost:3000/auth/linkedin',
+      client_id: '77a0gjc8r9c5g0',
+      client_secret: 'EYSGGovbjW6q1UKj'
+    }};
+    request.post('https://www.linkedin.com/oauth/v2/accessToken', form, function(err, res, body) {
+      console.log(JSON.parse(res.body));
+    });
+    response.sendFile(__dirname + '/close.html');
+  });
 
   //endpoints for using passport
   router.get('/auth/google',
