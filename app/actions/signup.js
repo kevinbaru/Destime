@@ -20,11 +20,11 @@ function receiveSIGNUP(user) {
   }
 }
 
-function SIGNUPError(message,error) {
+function SIGNUPError(message,errors) {
   return {
     type: SIGNUP_FAILURE,
     message,
-    error,
+    errors,
   }
 }
 export function signUpTwitter(){
@@ -38,8 +38,8 @@ export function signUpTwitter(){
             ).then(({ user, response }) =>  {
         if (!response.success) {
           // If there was a problem, we want to
-          // dispatch the error condition
 
+          // dispatch the error condition
           dispatch(SIGNUPError(user.message))
           return Promise.reject(user)
         } else {
@@ -51,9 +51,8 @@ export function signUpTwitter(){
         }
       }).catch(err => console.log("Error: ", err))
   }
-
-
 }
+
 export function signUpFacebook(){
   return dispatch => {
     // We dispatch requestSIGNUP to kickoff the call to the API
@@ -77,9 +76,6 @@ export function signUpFacebook(){
         }
       }).catch(err => console.log("Error: ", err))
   }
-
-
-
 
 }
 
@@ -106,38 +102,39 @@ export function signUpLinkedin(){
         }
       }).catch(err => console.log("Error: ", err))
   }
-
-
-
 }
+
 export function signUpGoogle(){
   return dispatch => {
     // We dispatch requestSIGNUP to kickoff the call to the API
-    dispatch(requestSIGNUP(creds))
+    dispatch(requestSIGNUP())
 
-    return fetch('http://localhost:3000/auth/google')
-      .then(response =>
-        response.json().then(user => ({ user, response }))
-            ).then(({ user, response }) =>  {
-        if (!response.success) {
-          // If there was a problem, we want to
-          // dispatch the error condition
-          dispatch(SIGNUPError(user.message))
-          return Promise.reject(user)
-        } else {
-          // If SIGNUP was successful redirect the user to the sign in Page
+    return fetch('http://localhost:3000/login')
+    .then(response => {console.log(response);
 
-          // Dispatch the success action
-          dispatch(receiveSIGNUP(user))
-          history.push('/login')
-        }
-      }).catch(err => console.log("Error: ", err))
-  }
+   })
+    //.then( response => {console.log(response)})
+    // .then( response => {
+    //     if (!response.success) {
+    //       // If there was a problem, we want to
+    //       // dispatch the error condition
+    //       dispatch(SIGNUPError(response.message,response.errors))
+    //       Promise.reject(response)
+    //     } else {
+    //       // If SIGNUP was successful redirect the user to the sign in Page
+    //
+    //       // Dispatch the success action
+    //       dispatch(receiveSIGNUP())
+    //       history.push('/login')
+    //     }
+    //   })
+      .catch(err => console.log("Error: ", err))
 
+}
 }
 
 export function signUpUser(creds) {
-  console.log('actioniii',creds)
+
   let config = {
 
       method: 'POST',
@@ -148,18 +145,22 @@ export function signUpUser(creds) {
       },
       body: JSON.stringify({
         name: creds.fullname,
+        firstname:creds.firstname,
+        lastname:creds.lastname,
         username: creds.email,
         password:creds.password,
         passwordRepeat:creds.passwordRepeat,
       })
     }
 
-  // let b={
-  //       name: creds.username,
-  //       username: creds.email,
-  //       password:creds.password,
-  //       passwordRepeat:creds.passwordRepeat,
-  //     }
+  let b={
+    name: creds.fullname,
+    firstname:creds.firstname,
+    lastname:creds.lastname,
+    username: creds.email,
+    password:creds.password,
+    passwordRepeat:creds.passwordRepeat,
+      }
 
   return dispatch => {
 
@@ -167,19 +168,17 @@ export function signUpUser(creds) {
     dispatch(requestSIGNUP(creds))
 
 
-    //return axios.post('http://76dda266.ngrok.io/signup', b)
-    return fetch('http://localhost:3000/signup', config)
-    .then(response => response.json())
+    return axios.post('http://localhost:3000/signup', b)
+    // return fetch('http://localhost:3000/signup', config)
+    // .then(response => response.json())
     .then( response => {
-        if (!response.success) {
+        if (!response.data.success) {
           // If there was a problem, we want to
           // dispatch the error condition
-          console.log('oooops')
-          dispatch(SIGNUPError(response.message,response.errors))
+          dispatch(SIGNUPError(response.data.message,response.data.summary))
           Promise.reject(response)
         } else {
           // If SIGNUP was successful redirect the user to the sign in Page
-          console.log('made iiit')
 
           // Dispatch the success action
           dispatch(receiveSIGNUP())
@@ -189,5 +188,5 @@ export function signUpUser(creds) {
       .catch(err => console.log("Error: ", err))
   }
 
-  console.log('piiik')
+
 }

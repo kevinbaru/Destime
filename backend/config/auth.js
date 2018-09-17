@@ -7,16 +7,17 @@ module.exports = {
     },
 
     'twitterAuth' : {
-        'consumerKey'       : '	dWOFhTHF9zDTW8GCHBL8VmPOP',
-        'consumerSecret'    : '	Ffpq1ZtO6cbAlUjrjqcLbOPhQf4XccOQTKLKSW3hnU7d7achDv',
+        'consumerKey'   : '	dWOFhTHF9zDTW8GCHBL8VmPOP',
+        'consumerSecret': '	Ffpq1ZtO6cbAlUjrjqcLbOPhQf4XccOQTKLKSW3hnU7d7achDv',
         'callbackURL'   : 'http://localhost:3000/user/signin/twitter/callback'
     },
 
     'googleAuth' : {
-        'clientID'      : '478522410885-hf7mscv37311pki0g9n1apb7fnhoo5el.apps.googleusercontent.com',
-        'clientSecret'  : 'uasPRPDUZ8gNqMuzFUiWUvdP',
+        'clientID'      : '604454276709-ccc3iatrhvh0fo8k4vqjmst9adh87frc.apps.googleusercontent.com',
+        'clientSecret'  : '8IQ17mfayVkdp9eBluR70iX7',
         'callbackURL'   : 'http://localhost:3000/user/signin/google/callback'
     },
+
 
     'linkedinAuth' : {
         'clientID'      : '86kkbluvwmjzof',

@@ -1,5 +1,6 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
-var GoogleStrategy = require('passport-google-oauth2').Strategy;
+//var GoogleStrategy = require('passport-google-oauth2').Strategy
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
@@ -10,6 +11,19 @@ var models = require('../models/models');
 var User = models.User
 
 module.exports = function(passport) {
+
+    passport.use(new GoogleStrategy({
+      clientID        : configAuth.googleAuth.clientID,
+      clientSecret    : configAuth.googleAuth.clientSecret,
+      callbackURL     : configAuth.googleAuth.callbackURL,
+    },
+    function(accessToken, refreshToken, profile, done) {
+      User.findOrCreate({ googleID: profile.id }, function (err, user) {
+        return done(err, user);
+      });
+    }
+    ));
+
     passport.use(new LocalStrategy(function(username, password, done) {
 
       // Find the user with the given username
@@ -76,43 +90,6 @@ module.exports = function(passport) {
         });
     }));
 
-    passport.use(new GoogleStrategy({
-        clientID        : configAuth.googleAuth.clientID,
-        clientSecret    : configAuth.googleAuth.clientSecret,
-        callbackURL     : configAuth.googleAuth.callbackURL,
-        passReqToCallback : true,
-    },
-    function(req, token, refreshToken, profile, done) {
-        process.nextTick(function() {
-            User.findOne({googleID: profile.id}, function(err, user) {
-                if (err) {
-                    return done(err);
-                }
-                // create a new account with this Facebook ID
-                if (!user) {
-                    var newUser = new User({
-                        firstname: profile.name.givenName,
-                        lastname: profile.name.familyName,
-                        email: profile.emails[0].value,
-                        googleID: profile.id,
-                        pictureURL: profile.photos[0].value,
-                        gGtoken:token,
-                        gGrefreshToken:refreshToken,
-                    });
-                    newUser.save(function(err, result) {
-                        if (err) {
-                            return done(err);
-                        }
-                        return done(null, newUser);
-                    });
-                }
-                else {
-                    return done(null, user);
-                }
-            });
-
-        });
-    }));
 
     passport.use(new TwitterStrategy({
 

@@ -1,12 +1,13 @@
 const webpack = require('webpack');
 const NodemonPlugin = require( 'nodemon-webpack-plugin' )
-
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './app/app.js',
   output: {
     path: __dirname + '/build',
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
+    publicPath:'/'
   },
   plugins: [
         new NodemonPlugin(),
@@ -35,6 +36,14 @@ module.exports = {
        },
     ]
   },
+  devServer:{
+    historyApiFallback:true,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './build/index.html'
+    })
+  ],
   stats: {
     colors: true
   },

@@ -26,7 +26,8 @@ export function signUpReducer(state = {
       return Object.assign({}, state, {
         isRegistering: false,
         isSignedUp: false,
-        errorMessage: action.message
+        errorMessage: action.message,
+        errors:action.errors
       })
 
     default:

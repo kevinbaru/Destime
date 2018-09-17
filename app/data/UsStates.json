@@ -1,0 +1,238 @@
+[
+    {
+        "value": "Alabama",
+        "label": "ALABAMA"
+    },
+    {
+        "value": "Alaska",
+        "label": "ALASKA"
+    },
+    {
+        "value": "American Samoa",
+        "label": "AMERICAN SAMOA"
+    },
+    {
+        "value": "Arizona",
+        "label": "ARIZONA"
+    },
+    {
+        "value": "Arkansas",
+        "label": "ARKANSAS"
+    },
+    {
+        "value": "California",
+        "label": "CALIFORNIA"
+    },
+    {
+        "value": "Colorado",
+        "label": "COLORADO"
+    },
+    {
+        "value": "Connecticut",
+        "label": "CONNECTICUT"
+    },
+    {
+        "value": "Delaware",
+        "label": "DELAWARE"
+    },
+    {
+        "value": "District Of Columbia",
+        "label": "DISTRICT OF COLUMBIA"
+    },
+    {
+        "value": "Federated States Of Micronesia",
+        "label": "FEDERATED STATES OF MICRONESIA"
+    },
+    {
+        "value": "Florida",
+        "label": "FLORIDA"
+    },
+    {
+        "value": "Georgia",
+        "label": "GEORGIA"
+    },
+    {
+        "value": "Guam",
+        "label": "GUAM"
+    },
+    {
+        "value": "Hawaii",
+        "label": "HAWAII"
+    },
+    {
+        "value": "Idaho",
+        "label": "IDAHO"
+    },
+    {
+        "value": "Illinois",
+        "label": "ILLINOIS"
+    },
+    {
+        "value": "Indiana",
+        "label": "INDIANA"
+    },
+    {
+        "value": "Iowa",
+        "label": "IOWA"
+    },
+    {
+        "value": "Kansas",
+        "label": "KANSAS"
+    },
+    {
+        "value": "Kentucky",
+        "label": "KENTUCKY"
+    },
+    {
+        "value": "Louisiana",
+        "label": "LOUISIANA"
+    },
+    {
+        "value": "Maine",
+        "label": "MAINE"
+    },
+    {
+        "value": "Marshall Islands",
+        "label": "MARSHALL ISLANDS"
+    },
+    {
+        "value": "Maryland",
+        "label": "MARYLAND"
+    },
+    {
+        "value": "Massachusetts",
+        "label": "MASSACHUSETTS"
+    },
+    {
+        "value": "Michigan",
+        "label": "MICHIGAN"
+    },
+    {
+        "value": "Minnesota",
+        "label": "MINNESOTA"
+    },
+    {
+        "value": "Mississippi",
+        "label": "MISSISSIPPI"
+    },
+    {
+        "value": "Missouri",
+        "label": "MISSOURI"
+    },
+    {
+        "value": "Montana",
+        "label": "MONTANA"
+    },
+    {
+        "value": "Nebraska",
+        "label": "NEBRASKA"
+    },
+    {
+        "value": "Nevada",
+        "label": "NEVADA"
+    },
+    {
+        "value": "New Hampshire",
+        "label": "NEW HAMPSHIRE"
+    },
+    {
+        "value": "New Jersey",
+        "label": "NEW JERSEY"
+    },
+    {
+        "value": "New Mexico",
+        "label": "NEW MEXICO"
+    },
+    {
+        "value": "New York",
+        "label": "NEW YORK"
+    },
+    {
+        "value": "North Carolina",
+        "label": "NORTH CAROLINA"
+    },
+    {
+        "value": "North Dakota",
+        "label": "NORTH DAKOTA"
+    },
+    {
+        "value": "Northern Mariana Islands",
+        "label": "NORTHERN MARIANA ISLANDS"
+    },
+    {
+        "value": "Ohio",
+        "label": "OHIO"
+    },
+    {
+        "value": "Oklahoma",
+        "label": "OKLAHOMA"
+    },
+    {
+        "value": "Oregon",
+        "label": "OREGON"
+    },
+    {
+        "value": "Palau",
+        "label": "PALAU"
+    },
+    {
+        "value": "Pennsylvania",
+        "label": "PENNSYLVANIA"
+    },
+    {
+        "value": "Puerto Rico",
+        "label": "PUERTO RICO"
+    },
+    {
+        "value": "Rhode Island",
+        "label": "RHODE ISLAND"
+    },
+    {
+        "value": "South Carolina",
+        "label": "SOUTH CAROLINA"
+    },
+    {
+        "value": "South Dakota",
+        "label": "SOUTH DAKOTA"
+    },
+    {
+        "value": "Tennessee",
+        "label": "TENNESSEE"
+    },
+    {
+        "value": "Texas",
+        "label": "TEXAS"
+    },
+    {
+        "value": "Utah",
+        "label": "UTAH"
+    },
+    {
+        "value": "Vermont",
+        "label": "VERMONT"
+    },
+    {
+        "value": "Virgin Islands",
+        "label": "VIRGIN ISLANDS"
+    },
+    {
+        "value": "Virginia",
+        "label": "VIRGINIA"
+    },
+    {
+        "value": "Washington",
+        "label": "WASHINGTON"
+    },
+    {
+        "value": "West Virginia",
+        "label": "WEST VIRGINIA"
+    },
+    {
+        "value": "Wisconsin",
+        "label": "WISCONSIN"
+    },
+    {
+        "value": "Wyoming",
+        "label": "WYOMING"
+    }
+]

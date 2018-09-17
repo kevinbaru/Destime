@@ -1,7 +1,8 @@
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 /* line 8, ../sass/signup_v2.sass */
 body {
   background-color: #0B0424;
-  font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/S
   padding: 0;
   margin: 0;
   color: white;
@@ -107,7 +108,7 @@ body {
   width: 100%;
 }
 /* line 94, ../sass/signup_v2.sass */
-.inner-container input, .inner-container textarea {
+.inner-container input, .inner-container select,.inner-container textarea {
   outline: none;
   resize: none;
   color: white;
@@ -120,7 +121,7 @@ body {
   border-image-slice: 1;
 }
 /* line 106, ../sass/signup_v2.sass */
-.inner-container input::placeholder, .inner-container textarea::placeholder {
+.inner-container input::placeholder,.inner-container select::placeholder, .inner-container textarea::placeholder {
   color: white;
   font-family: "Poppins", sans-serif;
   letter-spacing: 1px;
@@ -142,6 +143,14 @@ body {
   border-radius: 3px;
   border-image-width: 2px;
   border-image-slice: 1;
+}
+
+
+.inner-container .inner-inner-container option{
+  display:block;
+  background-color: #4BC2B6;
+  width:100%;
+  height:25px;
 }
 /* line 127, ../sass/signup_v2.sass */
 .inner-container .inner-inner-container .double-input-container {
@@ -185,7 +194,42 @@ body {
 }
 /* line 162, ../sass/signup_v2.sass */
 .inner-container .inner-inner-container #signup-button {
-  margin-top: 40px;
+
+  width: 100%;
+  height: 35px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #4BC2B6 0%, #FEEB25 100%);
+  border: 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.inner-container .inner-inner-container #save-button {
+
+  width: 30%;
+  height: 35px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #4BC2B6 0%, #FEEB25 100%);
+  border: 0;
+  font-size: 14px;
+  font-weight: 200;
+  float:right;
+}
+
+.inner-container .inner-inner-container #cancel-button {
+
+  width: 30%;
+  height: 35px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #4BC2B6 0%, #FEEB25 100%);
+  border: 0;
+  font-size: 14px;
+  font-weight: 200;
+  float:left;
+}
+
+.inner-container .inner-inner-container #signin-button {
+
   width: 100%;
   height: 35px;
   border-radius: 3px;
@@ -194,14 +238,85 @@ body {
   font-size: 14px;
   font-weight: 200;
 }
+.inner-container .inner-inner-container #signin-button:hover {
+  /*Gradient*/
+  background: #2cfec9; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #fee433, #2cfec9 60%); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #fee433, #2cfec9 60%); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #fee433, #2cfec9 60%); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #fee433, #2cfec9 60%); /* Standard syntax */
+}
+.inner-container .inner-inner-container #signup-button:hover {
+  /*Gradient*/
+  background: #2cfec9; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #fee433, #2cfec9 60%); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #fee433, #2cfec9 60%); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #fee433, #2cfec9 60%); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #fee433, #2cfec9 60%); /* Standard syntax */
+}
 
-.inner-container .inner-inner-container #signin-button {
-  
-  width: 100%;
-  height: 35px;
-  border-radius: 3px;
-  background: linear-gradient(to right, #4BC2B6 0%, #FEEB25 100%);
-  border: 0;
-  font-size: 14px;
-  font-weight: 200;
+.error-placeholder{
+    color:red;
+    margin:-40px 0px 30px 0px;
+}
+.invalid{
+    color:red !important;;
+}
+.invalid:after {
+  content:"*";
+  color: red;
+  font-weight: bold;
+  display: inline;
+}
+.alternative {
+  text-align:center;
+  font-size:14px;
+  margin-top: 10px;
+}
+.close {
+  margin-top:-17px;
+  margin-right:-32px;
+  cursor: pointer;
+  color: white;
+  border: 1px solid #AEAEAE;
+  border-radius: 30px;
+  background: #605F61;
+  font-size: 31px;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 0px;
+  padding: 11px 3px;
+
+}
+.close:before{
+ content: "×";
+}
+
+@media screen and (max-width:700px) {
+  .inner-container .inner-inner-container .double-input-container {
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    width: 100%;
+
+  }
+  .inner-container .inner-inner-container .double-input-container .double-input {
+    box-sizing: border-box;
+    height: 35px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 40px;
+
+  }
+  /* line 139, ../sass/signup_v2.sass */
+  .inner-container .inner-inner-container .double-input-container .right-input {
+    box-sizing: border-box;
+    margin-left: 0;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .inner-container .inner-inner-container .last-container {
+    margin-top: 0px;
+  }
 }

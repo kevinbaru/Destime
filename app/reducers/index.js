@@ -1,15 +1,14 @@
-import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
-import {signUpReducer} from  './signUpReducer'
-import {authReducer} from './loginReducer'
-
+import {signUpReducer} from  './signUpReducer';
+import {authReducer} from './loginReducer';
+import {alertReducer} from './alertReducer';
 
 
 const rootReducer = combineReducers({
 
     signIn: authReducer,
     signUp: signUpReducer,
-    routing: routerReducer // this reducer is used by React Router in Redux
+    alert:alertReducer,
 });
 
 export default rootReducer;

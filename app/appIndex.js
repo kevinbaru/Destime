@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import MainPage from './components/MainPage';
 import SignUp from './components/SignUpPage';
 import SignIn from './components/SignInPage';
-import { Router, Route } from 'react-router';
-//import {HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import EditProfile from './components/editProfile';
+import MyProfile from './components/myProfile';
+import { Router,browserHistory, Route, Switch, Link } from 'react-router-dom'
 import history from './history';
 
 
@@ -15,19 +16,13 @@ class AppIndex extends React.Component{
     return(
       <div>
       <Router history={history}>
-       {/* <Switch>
-         <Route exact path="/" component={MainPage} />
-         <Route exact path="/signup" component={SignUp} />
-         <Route exact path="/login" component={SignIn} />
-        <Route exact path="/home" component={MainPage} />
-      </Switch> */}
-
-        <div>
-            <Route exact path='/' component={MainPage} />
+        <Switch>
+            <Route exact path='/' component={SignIn} />
             <Route path="/login" component={SignIn} />
             <Route path="/signup" component={SignUp} />
-        </div>
-
+            <Route path='/myProfile' component={MyProfile} />
+            <Route path='/editProfile' component={EditProfile} />
+        </Switch>
      </Router>
    </div>
 
